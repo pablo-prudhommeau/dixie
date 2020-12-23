@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+html {
+    font-family: 'Pacifico', cursive;
+    font-size: 30px;
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    background: #151515;
+    color: #dedede;
+}
+
+.logo {
+    margin: 40px;
+    width: 200px;
+    height: 200px;
+}
+
+.brightness-wrapper {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.brightness-range {
+    height: 50px;
+}
+
+.rangeslider__fill {
+    background: #933030 !important;
+}

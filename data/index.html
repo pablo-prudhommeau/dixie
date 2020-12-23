@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dixie | Levitation station</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://cdn.prudhommeau.fr/dixie/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.3/rangeslider.min.css">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.3/rangeslider.min.js"></script>
+</head>
+<body>
+<img class="logo" src="https://cdn.prudhommeau.fr/dixie/logo.png"/>
+<br/>
+<div class="brightness-wrapper">
+    <div class="brightness-range">
+        <input id="brightness-range-input" type="range" min="0" max="100" step="1" data-orientation="horizontal">
+    </div>
+    <div class="brightness-value"></div>
+</div>
+</body>
+<script type="text/javascript">
+    $('#brightness-range-input').rangeslider({
+        polyfill: false,
+        onSlide: function (position, value) {
+            $('.brightness-value').html(value + '%');
+        },
+        onSlideEnd: function (position, value) {
+            $.post('/brightness/set', {value: value});
+        }
+    });
+    $.get('/brightness/get', function (data) {
+        $("#brightness-range-input").val(data).change();
+        $('.brightness-value').html(data + '%');
+    });
+</script>
+</html>
